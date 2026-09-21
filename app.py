@@ -56,6 +56,15 @@ BASE DE CONOCIMIENTO:
 ---
 """
 
+PREGUNTAS_RAPIDAS = [
+    "El producto que compré nunca llegó",
+    "Recibí un producto diferente al que compré",
+    "Quiero cancelar una compra que ya hice",
+    "Creo que fui víctima de un fraude",
+    "¿Puedo recuperar mi dinero?",
+    "No logro contactar al vendedor",
+]
+
 st.title(f"⚖️ {config.NOMBRE_APP}")
 
 if "messages" not in st.session_state:
@@ -65,13 +74,26 @@ if not st.session_state.messages:
     with st.chat_message("assistant"):
         st.write(config.MENSAJE_BIENVENIDA)
 
+# Los botones solo aparecen antes de la primera pregunta del usuario.
+botones = st.empty()
+if not st.session_state.messages:
+    with botones.container():
+        st.caption("O elige una pregunta frecuente:")
+        columnas = st.columns(3)
+        for i, texto in enumerate(PREGUNTAS_RAPIDAS):
+            if columnas[i % 3].button(texto, use_container_width=True, key=f"rapida_{i}"):
+                st.session_state.pregunta_rapida = texto
+
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
         st.write(msg["content"])
 
-pregunta = st.chat_input("Escribe tu pregunta...")
+pregunta = st.chat_input("Escribe tu pregunta...") or st.session_state.pop(
+    "pregunta_rapida", None
+)
 
 if pregunta:
+    botones.empty()
     st.session_state.messages.append({"role": "user", "content": pregunta})
     with st.chat_message("user"):
         st.write(pregunta)
