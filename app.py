@@ -61,8 +61,6 @@ PREGUNTAS_RAPIDAS = [
     "Recibí un producto diferente al que compré",
     "Quiero cancelar una compra que ya hice",
     "Creo que fui víctima de un fraude",
-    "¿Puedo recuperar mi dinero?",
-    "No logro contactar al vendedor",
 ]
 
 st.title(f"⚖️ {config.NOMBRE_APP}")
