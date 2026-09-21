@@ -8,7 +8,10 @@ import config
 st.set_page_config(page_title=config.NOMBRE_APP, page_icon="⚖️")
 
 # --- API key ---
-api_key = st.secrets.get("ANTHROPIC_API_KEY")
+try:
+    api_key = st.secrets.get("ANTHROPIC_API_KEY")
+except FileNotFoundError:  # no existe ningún secrets.toml
+    api_key = None
 if not api_key:
     st.error(
         "Falta configurar la API key de Anthropic. Agrégala en "

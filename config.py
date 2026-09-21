@@ -6,11 +6,13 @@ No deberías necesitar tocar app.py para eso.
 """
 
 # Tema exacto de derecho colombiano que el chatbot puede cubrir.
-# TODO: reemplazar con el tema real (ej. "derecho de arrendamiento urbano en Colombia").
-TEMA = "un tema de derecho colombiano (pendiente de definir)"
+TEMA = (
+    "fraude y protección al consumidor en compras en línea en Colombia "
+    "(Ley 1480 de 2011 y normas relacionadas)"
+)
 
 # Nombre visible de la app en la interfaz.
-NOMBRE_APP = "Asistente Legal"
+NOMBRE_APP = "Asistente Legal - Fraude en Compras Online"
 
 # Archivo con el material fuente (leyes, doctrina, resúmenes, jurisprudencia, etc.).
 # Todo su contenido se inyecta en el prompt del sistema como base de conocimiento.

@@ -8,7 +8,7 @@ web con link, sin que la persona que lo usa tenga que instalar nada.
 
 - `app.py` — la app (interfaz de chat + llamada al modelo).
 - `config.py` — tema, nombre de la app, modelo, mensaje de bienvenida.
-- `context.md` — la base de conocimiento (hoy tiene contenido de ejemplo).
+- `context.md` — la base de conocimiento (fraude y protección al consumidor en compras en línea, Colombia).
 - `requirements.txt` — dependencias.
 - `.streamlit/secrets.toml.example` — plantilla para la API key.
 
