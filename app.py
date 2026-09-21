@@ -79,9 +79,9 @@ botones = st.empty()
 if not st.session_state.messages:
     with botones.container():
         st.caption("Ejemplos de preguntas frecuentes:")
-        columnas = st.columns(3)
+        columnas = st.columns(2)
         for i, texto in enumerate(PREGUNTAS_RAPIDAS):
-            if columnas[i % 3].button(texto, use_container_width=True, key=f"rapida_{i}"):
+            if columnas[i % 2].button(texto, use_container_width=True, key=f"rapida_{i}"):
                 st.session_state.pregunta_rapida = texto
 
 for msg in st.session_state.messages:
