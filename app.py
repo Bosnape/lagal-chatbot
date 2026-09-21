@@ -23,13 +23,12 @@ client = Anthropic(api_key=api_key)
 
 
 # --- Base de conocimiento ---
-@st.cache_data
-def cargar_contexto() -> str:
-    ruta = Path(config.CONTEXTO_PATH)
-    return ruta.read_text(encoding="utf-8") if ruta.exists() else ""
+ruta_contexto = Path(__file__).parent / config.CONTEXTO_PATH
+if not ruta_contexto.exists():
+    st.error(f"No se encontró la base de conocimiento ({config.CONTEXTO_PATH}).")
+    st.stop()
 
-
-CONTEXTO = cargar_contexto()
+CONTEXTO = ruta_contexto.read_text(encoding="utf-8")
 
 SYSTEM_PROMPT = f"""Eres un asistente conversacional especializado en {config.TEMA}, \
 en el contexto del derecho colombiano.
